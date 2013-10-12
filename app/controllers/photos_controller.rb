@@ -11,11 +11,11 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(params[:photo])
     if @photo.save
-      redirect_to '/photos'
       flash[:notice] = "Image saved"
     else
       flash[:notice] = "Image is not save"
     end
+    redirect_to root_path
   end
 
 end
