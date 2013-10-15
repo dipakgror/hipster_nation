@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.gritter
+//= require jquery.raty.min
 //= require_tree .

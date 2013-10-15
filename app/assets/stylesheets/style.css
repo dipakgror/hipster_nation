@@ -19,6 +19,7 @@ header{
 .image_section{
 	border:#3B5998 solid 5px;
 	min-height:532px;
+  margin-top:-45px;
 }
 .ad-space{
 	border:#3B5998 solid 2px;

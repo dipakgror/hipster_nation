@@ -14,14 +14,16 @@
   </header>
   <!--- Middle container start -->     
 
-<div class="container">
-  <div class="col-lg-10">
+<div class="container" style="min-height:500px;">
+  <div class="col-lg-12">
     <div class="row space">
       <%= yield%>
+      <%= flash[:notice]%>
+      <%= flash[:error]%>
     </div>   
   </div>      
             
-            
+<!---
     <div class="col-lg-2 space text-center">
       <div class="space"></div>
       <div class="ad-space">
@@ -34,7 +36,7 @@
         <h3>AD<br /> Space</h3>
       </div>
     </div>
-
+-->
 </div>
     
   <!--- footer start -->

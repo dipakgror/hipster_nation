@@ -10,5 +10,7 @@
  *
  *= require_self
  *= style
+ *= normalize
+ *= jquery.gritter
  *= require_tree .
  */
