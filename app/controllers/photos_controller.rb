@@ -19,5 +19,5 @@ class PhotosController < ApplicationController
     end
     redirect_to root_path
   end
-
+  
 end

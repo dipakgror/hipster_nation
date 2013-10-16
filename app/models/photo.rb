@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
+  has_many :ratings
   has_many :comments
   attr_accessible :photo
   mount_uploader :photo, ImageUploader

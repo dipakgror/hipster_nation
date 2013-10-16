@@ -1,11 +1,15 @@
-<a class="btn" style="margin-top :-27px;"><img src="/assets/play-button.jpeg" /></a>
+<a class="btn" style="margin :-85px 80px 0 140px;"><img src="/assets/next.png" /></a>
 <div class="col-lg-7 space">
   <div class="row">
     <!--- user comment box start -->
 
     <div class="col-lg-7">
       <div class="user-comment-box">
+      <%= form_for :rating, url: ratings_path, remote: true, html: {id: 'rating_form'} do |f| %>
+        <%= hidden_field_tag :photo_id, @photo.id%>
         <div class="row text-center space" id="star"></div>
+        <%= f.submit '', style: 'display:block'%>
+      <% end %>
         <div class="row space">
                 <div class="widget-box ">
                     <div class="widget-header">
@@ -153,7 +157,10 @@
         size     : 67,
         starHalf : 'star-half-big.png',
         starOff  : 'star-off-big.png',
-        starOn   : 'star-on-big.png'
+        starOn   : 'star-on-big.png',
+        click: function(score, evt) {
+          $("#rating_form").submit();
+        }
       });
     });
   </script>
