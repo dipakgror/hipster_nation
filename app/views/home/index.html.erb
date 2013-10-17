@@ -1,14 +1,15 @@
-<a class="btn" style="margin :-85px 80px 0 140px;"><img src="/assets/next.png" /></a>
 <div class="col-lg-7 space">
   <div class="row">
     <!--- user comment box start -->
 
     <div class="col-lg-7">
       <div class="user-comment-box">
-      <%= form_for :rating, url: ratings_path, remote: true, html: {id: 'rating_form'} do |f| %>
-        <%= hidden_field_tag :photo_id, @photo.id%>
-        <div class="row text-center space" id="star"></div>
-      <% end %>
+        <% unless @photo.blank? %>
+          <%= form_for :rating, url: ratings_path, remote: true, html: {id: 'rating_form'} do |f| %>
+            <%= hidden_field_tag :photo_id, @photo.id%>
+            <div class="row text-center space" id="star"></div>
+          <% end %>
+        <% end %>
         <div class="row space">
                 <div class="widget-box ">
                     <div class="widget-header">
@@ -96,13 +97,15 @@
                               </div>
                             </div>
                           </div><div style="background: none repeat scroll 0% 0% rgb(0, 0, 0); width: 7px; position: absolute; top: 46px; opacity: 0.4; display: none; border-radius: 7px 7px 7px 7px; z-index: 99; right: 1px; height: 227.336px;" class="slimScrollBar ui-draggable"></div><div style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px 7px 7px 7px; background: none repeat scroll 0% 0% rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div></div>
-                          <%= form_for :comment, url: comments_path, remote: true, html: {id: 'comment_form'} do |f|%>
-                            <%= hidden_field_tag :photo_id, @photo.id%>
-                            <div class="form-actions input-group">
-                              <input type="text" placeholder="Type your message here ..." class="col-lg-9" name="message">
+                          <% unless @photo.blank? %>
+                            <%= form_for :comment, url: comments_path, remote: true, html: {id: 'comment_form'} do |f|%>
+                              <%= hidden_field_tag :photo_id, @photo.id%>
+                              <div class="form-actions input-group">
+                                <input type="text" placeholder="Type your message here ..." class="col-lg-9" name="message">
                               
                               <%= f.submit 'Send', :class => "btn btn-small btn-info no-radius"%>
-                            </div>
+                              </div>
+                            <% end %>
                           <% end %>
                         </div><!--/widget-main-->
                       </div><!--/widget-body-->
@@ -113,16 +116,7 @@
 <!--- user photo column -->
             <%# if user_signed_in? %>
               <div class="col-lg-5">
-                <%= form_for Photo.new do |f| %>
-                  <div class="fileupload fileupload-new gritter" data-provides="fileupload">
-                    <div class="fileupload-new thumbnail" style="width: 245px; height: 175px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
-                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 245px; max-height: 175px; line-height: 20px;"></div>
-                    <div>
-                      <span class="btn btn-file btn-warning"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><%= f.file_field :photo%></span>
-                      <%= f.submit  "Upload", :class => "btn btn-success", :style => "position: relative; left: 48px;" %></p>
-                    </div>
-                  </div>
-                <% end %>
+                <a class="btn" style="margin: 35px;"><img src="/assets/next.png" /></a>
               </div>
             <%#else%>
                 <div class="col-lg-5">

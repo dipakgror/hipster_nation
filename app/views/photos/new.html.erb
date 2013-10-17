@@ -1,5 +1,40 @@
-<%= form_for @photo do |f| %>
-  <%= f.label :UploadImage%>
-  <%= f.file_field :photo%>
-  <%= f.submit %></p>
+<%= form_for Photo.new do |f| %>
+<div class="col-lg-5 space">
+  <div class="image_section text-center">
+      <div class="fileupload fileupload-new gritter" data-provides="fileupload">
+        <div class="fileupload-new thumbnail" style="width: 435px; height: 522px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 435px; max-height: 522px; line-height: 20px;"></div>
+        <div>
+          <span class="btn btn-file btn-warning"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><%= f.file_field :photo%></span>
+          <a href="#" class="btn fileupload-exists btn-warning" data-dismiss="fileupload">Remove</a>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="col-lg-7 space">
+  <div class="row">
+    <div class="widget-box ">
+      <div class="widget-header">
+          <h4 class="lighter smaller"><i class="icon-comment blue"></i>Add a few comments on what advise you are looking for. (Optional)</h4>
+      </div>
+      <div class="widget-body">
+        <%= f.text_area :advice_for, size: "103x10"%>
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.submit  "Submit to Hipster Nation", :class => "btn btn-warning", :style => "position: relative; left: 48px;" %>
 <% end %>
+  <script type="text/javascript">
+    $(document).ready(function () {    
+      <% unless flash[:notice].blank? %>
+        $.gritter.add({
+          title: 'Confirmation',
+          text: '<%= flash[:notice] %>',
+          image: '/assets/confirm.jpg',
+          sticky: false, 
+          time: 8000,
+        });
+      <% end %>
+    });
+  </script>
