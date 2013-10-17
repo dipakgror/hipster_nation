@@ -8,7 +8,6 @@
       <%= form_for :rating, url: ratings_path, remote: true, html: {id: 'rating_form'} do |f| %>
         <%= hidden_field_tag :photo_id, @photo.id%>
         <div class="row text-center space" id="star"></div>
-        <%= f.submit '', style: 'display:block'%>
       <% end %>
         <div class="row space">
                 <div class="widget-box ">
@@ -97,12 +96,14 @@
                               </div>
                             </div>
                           </div><div style="background: none repeat scroll 0% 0% rgb(0, 0, 0); width: 7px; position: absolute; top: 46px; opacity: 0.4; display: none; border-radius: 7px 7px 7px 7px; z-index: 99; right: 1px; height: 227.336px;" class="slimScrollBar ui-draggable"></div><div style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px 7px 7px 7px; background: none repeat scroll 0% 0% rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div></div>
-                          <form>
-                              <div class="form-actions input-group">
-                                  <input type="text" placeholder="Type your message here ..." class="col-lg-9" name="message">
-                                  <button class="btn btn-small btn-info no-radius" onclick="return false;"><i class="icon-share-alt"></i> <span class="hidden-phone">Send</span></button>
-                              </div>
-                          </form>
+                          <%= form_for :comment, url: comments_path, remote: true, html: {id: 'comment_form'} do |f|%>
+                            <%= hidden_field_tag :photo_id, @photo.id%>
+                            <div class="form-actions input-group">
+                              <input type="text" placeholder="Type your message here ..." class="col-lg-9" name="message">
+                              
+                              <%= f.submit 'Send', :class => "btn btn-small btn-info no-radius"%>
+                            </div>
+                          <% end %>
                         </div><!--/widget-main-->
                       </div><!--/widget-body-->
                     </div>
